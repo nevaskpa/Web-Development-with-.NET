@@ -4,51 +4,50 @@
     ViewData["Title"] = "Home page";
 }
 
-<html>   
-    <head>
-        <style>
-            table, th, td {
-                border: 1px solid black;
-                border-collapse: collapse;
-            }
-            th, td {
-                padding: 10px;
-                text-align:justify;
-            }
-        </style>
-    </head>
-    <div class="text-center">
-        <h1> Welcome to CoreWiki Project </h1>
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<div class="text-center">
+    <h1 style="font-family:Cambria;"> Welcome to CoreWiki Project </h1>
+</div>
+<body>
+    <div class="top-section">
+        <h2 style="text-align:center; padding: 20px; font-family:Cambria;">
+            List of Pages
+        </h2>
     </div>
-    <body>
-        <div class="top-section">
-            <h2 style="text-align:center; padding: 20px">
-                List of Pages
-            </h2>
-        </div>
-        <div class="main-section">
-            <table align="center">
-                <thead>
-                    <tr>
-                        <th>Topic</th>
-                        <th>Hyperlink</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Computer</td>
-                        <td><a href="~/ComputerWiki">Computer Wiki</a></td>
-                    </tr>
-                    <tr>
-                        <td>Laptop</td>
-                        <td><a href="~/LaptopWiki">Laptop Wiki</a></td>
-                    </tr>
-                    <tr>
-                        <td>Smartphone</td>
-                        <td><a href="~/SmartphoneWiki">Smartphone Wiki</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </body>
-</html>
+    <div>
+        <table align="center" style="font-family:Cambria;">
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Hyperlink</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Computer</td>
+                    <td><a href="~/ComputerWiki" target="_blank">Computer Wiki</a></td>
+                </tr>
+                <tr>
+                    <td>Laptop</td>
+                    <td><a href="~/LaptopWiki" target="_blank">Laptop Wiki</a></td>
+                </tr>
+                <tr>
+                    <td>Smartphone</td>
+                    <td><a href="~/SmartphoneWiki" target="_blank">Smartphone Wiki</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
