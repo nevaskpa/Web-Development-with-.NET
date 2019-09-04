@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\source\\repos\\nevaskpa\\IS7012\\CoreWiki\\CoreWiki.csproj": {}
+    "C:\\Users\\Parnika\\source\\repos\\nevaskpa\\IS7012\\CoreWiki\\CoreWiki.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\source\\repos\\nevaskpa\\IS7012\\CoreWiki\\CoreWiki.csproj": {
+    "C:\\Users\\Parnika\\source\\repos\\nevaskpa\\IS7012\\CoreWiki\\CoreWiki.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\nevaskpa\\IS7012\\CoreWiki\\CoreWiki.csproj",
+        "projectUniqueName": "C:\\Users\\Parnika\\source\\repos\\nevaskpa\\IS7012\\CoreWiki\\CoreWiki.csproj",
         "projectName": "CoreWiki",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\nevaskpa\\IS7012\\CoreWiki\\CoreWiki.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\nevaskpa\\IS7012\\CoreWiki\\obj\\",
+        "projectPath": "C:\\Users\\Parnika\\source\\repos\\nevaskpa\\IS7012\\CoreWiki\\CoreWiki.csproj",
+        "packagesPath": "C:\\Users\\Parnika\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Parnika\\source\\repos\\nevaskpa\\IS7012\\CoreWiki\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Parnika\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.3, )"
             }
           },
           "imports": [
