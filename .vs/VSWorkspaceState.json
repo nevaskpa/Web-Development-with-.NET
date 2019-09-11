@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CoreCrud",
+    "\\CoreCrud\\Models",
+    "\\CoreCrud\\Pages",
+    "\\CoreCrud\\Pages\\Books"
   ],
+  "SelectedNode": "\\CoreCrud\\Pages\\Books",
   "PreviewInSolutionExplorer": false
 }
