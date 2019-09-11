@@ -76,3 +76,4 @@ C:\Users\Parnika\source\repos\nevaskpa\IS7012\CoreCrud1\obj\Debug\netcoreapp2.2\
 C:\Users\Parnika\source\repos\nevaskpa\IS7012\CoreCrud1\obj\Debug\netcoreapp2.2\CoreCrud.dll
 C:\Users\Parnika\source\repos\nevaskpa\IS7012\CoreCrud1\obj\Debug\netcoreapp2.2\CoreCrud.pdb
 C:\Users\Parnika\source\repos\nevaskpa\IS7012\CoreCrud1\obj\Debug\netcoreapp2.2\CoreCrud.csproj.CopyComplete
+C:\Users\Parnika\source\repos\nevaskpa\IS7012\CoreCrud\obj\Debug\netcoreapp2.2\CoreCrud.csprojAssemblyReference.cache
