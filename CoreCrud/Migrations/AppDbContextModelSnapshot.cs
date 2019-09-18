@@ -3,32 +3,25 @@ using System;
 using CoreCrud.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoreCrud.Migrations
 {
-    [DbContext(typeof(CoreCrudContext))]
-    [Migration("20190911054959_Initial")]
-    partial class Initial
+    [DbContext(typeof(AppDbContext))]
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             modelBuilder.Entity("CoreCrud.Models.Book", b =>
                 {
-                    b.Property<string>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Author");
-
-                    b.Property<string>("BookPublisherId");
 
                     b.Property<int>("Edition");
 
@@ -40,7 +33,7 @@ namespace CoreCrud.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<string>("PublisherID");
+                    b.Property<int>("PublisherId");
 
                     b.Property<string>("Title");
 
@@ -48,14 +41,14 @@ namespace CoreCrud.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("PublisherID");
+                    b.HasIndex("PublisherId");
 
-                    b.ToTable("Book");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("CoreCrud.Models.Publisher", b =>
                 {
-                    b.Property<string>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Country");
@@ -64,14 +57,15 @@ namespace CoreCrud.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Publisher");
+                    b.ToTable("Publishers");
                 });
 
             modelBuilder.Entity("CoreCrud.Models.Book", b =>
                 {
                     b.HasOne("CoreCrud.Models.Publisher", "Publisher")
                         .WithMany("Books")
-                        .HasForeignKey("PublisherID");
+                        .HasForeignKey("PublisherId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

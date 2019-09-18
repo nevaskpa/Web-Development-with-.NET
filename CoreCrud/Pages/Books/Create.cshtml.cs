@@ -11,15 +11,16 @@ namespace CoreCrud.Pages.Books
 {
     public class CreateModel : PageModel
     {
-        private readonly CoreCrud.Models.CoreCrudContext _context;
+        private readonly CoreCrud.Models.AppDbContext _context;
 
-        public CreateModel(CoreCrud.Models.CoreCrudContext context)
+        public CreateModel(CoreCrud.Models.AppDbContext context)
         {
             _context = context;
         }
 
         public IActionResult OnGet()
         {
+        ViewData["PublisherId"] = new SelectList(_context.Publishers, "ID", "ID");
             return Page();
         }
 
@@ -33,7 +34,7 @@ namespace CoreCrud.Pages.Books
                 return Page();
             }
 
-            _context.Book.Add(Book);
+            _context.Books.Add(Book);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

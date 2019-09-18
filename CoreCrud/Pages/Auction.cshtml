@@ -1,0 +1,38 @@
+﻿@page
+@model CoreCrud.Pages.AuctionModel
+@{
+    ViewData["Title"] = "Auction";
+}
+
+<h1 class="text-center">Auction</h1>
+<hr/>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+            if (book.IsBestseller == true)
+            {
+                <tr style="color:blue">
+                    <td>@book.Title <em>(Bestseller)</em></td>
+                    <td>@book.Author</td>
+                    <td>@book.PublisherId</td>
+                </tr>
+            }
+            else
+            {   
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.PublisherId</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

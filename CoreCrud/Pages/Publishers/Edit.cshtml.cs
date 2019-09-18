@@ -12,9 +12,9 @@ namespace CoreCrud.Pages.Publishers
 {
     public class EditModel : PageModel
     {
-        private readonly CoreCrud.Models.CoreCrudContext _context;
+        private readonly CoreCrud.Models.AppDbContext _context;
 
-        public EditModel(CoreCrud.Models.CoreCrudContext context)
+        public EditModel(CoreCrud.Models.AppDbContext context)
         {
             _context = context;
         }
@@ -22,14 +22,14 @@ namespace CoreCrud.Pages.Publishers
         [BindProperty]
         public Publisher Publisher { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Publisher = await _context.Publisher.FirstOrDefaultAsync(m => m.ID == id);
+            Publisher = await _context.Publishers.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Publisher == null)
             {
@@ -66,9 +66,9 @@ namespace CoreCrud.Pages.Publishers
             return RedirectToPage("./Index");
         }
 
-        private bool PublisherExists(string id)
+        private bool PublisherExists(int id)
         {
-            return _context.Publisher.Any(e => e.ID == id);
+            return _context.Publishers.Any(e => e.ID == id);
         }
     }
 }

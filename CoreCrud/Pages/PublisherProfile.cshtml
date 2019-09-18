@@ -1,0 +1,38 @@
+﻿@page
+@model CoreCrud.Pages.PublisherProfileModel
+@{
+    ViewData["Title"] = "PublisherProfile";
+}
+
+<h1 class="text-center">Publisher Profile</h1>
+<hr />
+
+<h2 class="text-center text-success">@Model.Publisher.Name</h2>
+<div class="row">
+
+    <div class="col-md-6">
+        <h3>Publisher Details</h3>
+        <dl>
+            <dd><h5>Country</h5></dd>
+            <dt>@Model.Publisher.Country</dt>
+        </dl>
+
+        @if (Model.Publisher.BestsellingProfile == true)
+        {
+            <p><h5 style="color:blue;"><em> ***Publisher of Bestsellers*** </em></h5></p>
+        }
+
+    </div>
+    <div class="col-md-6">
+        <h3>Books Published</h3>
+        <ul>
+            @foreach (var book in Model.Publisher.Books.OrderBy(x => x.Title))
+            {
+                <li>
+                    <strong>@book.Title</strong> by
+                    @book.Author
+                </li>
+            }
+        </ul>
+    </div>
+</div>

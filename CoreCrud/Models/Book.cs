@@ -8,7 +8,7 @@ namespace CoreCrud.Models
 {
     public class Book
     {
-        public string ID { get; set; } // ID property for a book
+        public int ID { get; set; } // ID property for a book
         public string Title { get; set; }
         public string Author { get; set; }
         public int Edition { get; set; }
@@ -21,8 +21,21 @@ namespace CoreCrud.Models
         public bool? IsBestseller { get; set; }
 
         // Defining the relationship
-        public string BookPublisherId { get; set; }
+        public int PublisherId { get; set; }
         public Publisher Publisher { get; set; }
-        
+
+        public bool IsClassic
+        {
+            get
+            {
+                int year = Int32.Parse(YearPublished);
+
+                if (year <= 1990)
+                    return true;
+
+                else
+                    return false;
+            }
+        }
     }
 }

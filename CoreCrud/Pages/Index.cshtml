@@ -8,11 +8,33 @@
     <h3 class="display-4">Books Collection</h3>
 </div>
 
-<p>
-    <img src="https://images.freeimages.com/images/large-previews/432/books-1562581.jpg" width="250" height="250"> 
-    <h6 style="font-family:cursive; color:cornflowerblue"><em>"Books are a uniquely portable magic." ~ Stephen King</em></h6>
-</p>
+<div class="row">
+
+    <div class="col-md-6">
+        <p>
+            <img src="https://images.freeimages.com/images/large-previews/432/books-1562581.jpg" width="250" height="250">
+            <h6 style="font-family:cursive; color:cornflowerblue"><em>"Books are a uniquely portable magic." ~ Stephen King</em></h6>
+        </p>
+    </div>
+
+    <div class="col-md-6">
+        <h3>Some Stats about the Collection</h3>
+        <ul>
+            <li>Total Bestsellers : @Model.CountOfBestsellers</li>
+            <li>Total Publishers : @Model.CountOfPublishers</li>
+            <li>Total Genres : @Model.CountOfGenres</li>
+            <li>Total Classics : @Model.CountOfClassics</li>
+        </ul>
+    </div>
+</div>
 <p>
     Being a voracious reader, books are my favorite things to collect. So far I have around 50 books in my personal collection, e-books and paper-backs. You may find some on this list with their publisher, author, genre and price details. This is going to be a long list but I'm on it.
     Feel free to add any new ones (I'll add them to my bucket list!) or update any information you think is incorrect or unavailable.
 </p>
+
+<h3>Sample URLs to the Publisher Profile Page</h3>
+<ul>
+    <li><a href="http://localhost:50509/PublisherProfile?id=2">http://localhost:50509/PublisherProfile?id=2</a></li>
+    <li><a href="http://localhost:50509/PublisherProfile?id=3">http://localhost:50509/PublisherProfile?id=3</a></li>
+    <li><a href="http://localhost:50509/PublisherProfile?id=4">http://localhost:50509/PublisherProfile?id=4</a></li>
+</ul>

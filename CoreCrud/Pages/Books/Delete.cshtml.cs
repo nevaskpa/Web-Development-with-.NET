@@ -11,9 +11,9 @@ namespace CoreCrud.Pages.Books
 {
     public class DeleteModel : PageModel
     {
-        private readonly CoreCrud.Models.CoreCrudContext _context;
+        private readonly CoreCrud.Models.AppDbContext _context;
 
-        public DeleteModel(CoreCrud.Models.CoreCrudContext context)
+        public DeleteModel(CoreCrud.Models.AppDbContext context)
         {
             _context = context;
         }
@@ -21,14 +21,15 @@ namespace CoreCrud.Pages.Books
         [BindProperty]
         public Book Book { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
+            Book = await _context.Books
+                .Include(b => b.Publisher).FirstOrDefaultAsync(m => m.ID == id);
 
             if (Book == null)
             {
@@ -37,18 +38,18 @@ namespace CoreCrud.Pages.Books
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string id)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Book = await _context.Book.FindAsync(id);
+            Book = await _context.Books.FindAsync(id);
 
             if (Book != null)
             {
-                _context.Book.Remove(Book);
+                _context.Books.Remove(Book);
                 await _context.SaveChangesAsync();
             }
 

@@ -11,9 +11,9 @@ namespace CoreCrud.Pages.Books
 {
     public class IndexModel : PageModel
     {
-        private readonly CoreCrud.Models.CoreCrudContext _context;
+        private readonly CoreCrud.Models.AppDbContext _context;
 
-        public IndexModel(CoreCrud.Models.CoreCrudContext context)
+        public IndexModel(CoreCrud.Models.AppDbContext context)
         {
             _context = context;
         }
@@ -22,7 +22,8 @@ namespace CoreCrud.Pages.Books
 
         public async Task OnGetAsync()
         {
-            Book = await _context.Book.ToListAsync();
+            Book = await _context.Books
+                .Include(b => b.Publisher).ToListAsync();
         }
     }
 }

@@ -11,23 +11,23 @@ namespace CoreCrud.Pages.Publishers
 {
     public class DetailsModel : PageModel
     {
-        private readonly CoreCrud.Models.CoreCrudContext _context;
+        private readonly CoreCrud.Models.AppDbContext _context;
 
-        public DetailsModel(CoreCrud.Models.CoreCrudContext context)
+        public DetailsModel(CoreCrud.Models.AppDbContext context)
         {
             _context = context;
         }
 
         public Publisher Publisher { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Publisher = await _context.Publisher.FirstOrDefaultAsync(m => m.ID == id);
+            Publisher = await _context.Publishers.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Publisher == null)
             {

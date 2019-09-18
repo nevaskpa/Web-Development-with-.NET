@@ -11,9 +11,9 @@ namespace CoreCrud.Pages.Publishers
 {
     public class CreateModel : PageModel
     {
-        private readonly CoreCrud.Models.CoreCrudContext _context;
+        private readonly CoreCrud.Models.AppDbContext _context;
 
-        public CreateModel(CoreCrud.Models.CoreCrudContext context)
+        public CreateModel(CoreCrud.Models.AppDbContext context)
         {
             _context = context;
         }
@@ -33,7 +33,7 @@ namespace CoreCrud.Pages.Publishers
                 return Page();
             }
 
-            _context.Publisher.Add(Publisher);
+            _context.Publishers.Add(Publisher);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

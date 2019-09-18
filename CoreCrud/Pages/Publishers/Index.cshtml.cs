@@ -11,9 +11,9 @@ namespace CoreCrud.Pages.Publishers
 {
     public class IndexModel : PageModel
     {
-        private readonly CoreCrud.Models.CoreCrudContext _context;
+        private readonly CoreCrud.Models.AppDbContext _context;
 
-        public IndexModel(CoreCrud.Models.CoreCrudContext context)
+        public IndexModel(CoreCrud.Models.AppDbContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace CoreCrud.Pages.Publishers
 
         public async Task OnGetAsync()
         {
-            Publisher = await _context.Publisher.ToListAsync();
+            Publisher = await _context.Publishers.ToListAsync();
         }
     }
 }

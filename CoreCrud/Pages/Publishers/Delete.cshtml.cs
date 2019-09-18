@@ -11,9 +11,9 @@ namespace CoreCrud.Pages.Publishers
 {
     public class DeleteModel : PageModel
     {
-        private readonly CoreCrud.Models.CoreCrudContext _context;
+        private readonly CoreCrud.Models.AppDbContext _context;
 
-        public DeleteModel(CoreCrud.Models.CoreCrudContext context)
+        public DeleteModel(CoreCrud.Models.AppDbContext context)
         {
             _context = context;
         }
@@ -21,14 +21,14 @@ namespace CoreCrud.Pages.Publishers
         [BindProperty]
         public Publisher Publisher { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Publisher = await _context.Publisher.FirstOrDefaultAsync(m => m.ID == id);
+            Publisher = await _context.Publishers.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Publisher == null)
             {
@@ -37,18 +37,18 @@ namespace CoreCrud.Pages.Publishers
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string id)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Publisher = await _context.Publisher.FindAsync(id);
+            Publisher = await _context.Publishers.FindAsync(id);
 
             if (Publisher != null)
             {
-                _context.Publisher.Remove(Publisher);
+                _context.Publishers.Remove(Publisher);
                 await _context.SaveChangesAsync();
             }
 

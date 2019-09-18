@@ -3,28 +3,30 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CoreCrud.Migrations
 {
-    public partial class Initial : Migration
+    public partial class New : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Publisher",
+                name: "Publishers",
                 columns: table => new
                 {
-                    ID = table.Column<string>(nullable: false),
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Publisher", x => x.ID);
+                    table.PrimaryKey("PK_Publishers", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Book",
+                name: "Books",
                 columns: table => new
                 {
-                    ID = table.Column<string>(nullable: false),
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(nullable: true),
                     Author = table.Column<string>(nullable: true),
                     Edition = table.Column<int>(nullable: false),
@@ -33,33 +35,32 @@ namespace CoreCrud.Migrations
                     Genre = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),
                     IsBestseller = table.Column<bool>(nullable: true),
-                    BookPublisherId = table.Column<string>(nullable: true),
-                    PublisherID = table.Column<string>(nullable: true)
+                    PublisherId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Book", x => x.ID);
+                    table.PrimaryKey("PK_Books", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Book_Publisher_PublisherID",
-                        column: x => x.PublisherID,
-                        principalTable: "Publisher",
+                        name: "FK_Books_Publishers_PublisherId",
+                        column: x => x.PublisherId,
+                        principalTable: "Publishers",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Book_PublisherID",
-                table: "Book",
-                column: "PublisherID");
+                name: "IX_Books_PublisherId",
+                table: "Books",
+                column: "PublisherId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Book");
+                name: "Books");
 
             migrationBuilder.DropTable(
-                name: "Publisher");
+                name: "Publishers");
         }
     }
 }

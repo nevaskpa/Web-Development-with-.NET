@@ -12,9 +12,9 @@ namespace CoreCrud.Pages.Books
 {
     public class EditModel : PageModel
     {
-        private readonly CoreCrud.Models.CoreCrudContext _context;
+        private readonly CoreCrud.Models.AppDbContext _context;
 
-        public EditModel(CoreCrud.Models.CoreCrudContext context)
+        public EditModel(CoreCrud.Models.AppDbContext context)
         {
             _context = context;
         }
@@ -22,19 +22,21 @@ namespace CoreCrud.Pages.Books
         [BindProperty]
         public Book Book { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
+            Book = await _context.Books
+                .Include(b => b.Publisher).FirstOrDefaultAsync(m => m.ID == id);
 
             if (Book == null)
             {
                 return NotFound();
             }
+           ViewData["PublisherId"] = new SelectList(_context.Publishers, "ID", "ID");
             return Page();
         }
 
@@ -66,9 +68,9 @@ namespace CoreCrud.Pages.Books
             return RedirectToPage("./Index");
         }
 
-        private bool BookExists(string id)
+        private bool BookExists(int id)
         {
-            return _context.Book.Any(e => e.ID == id);
+            return _context.Books.Any(e => e.ID == id);
         }
     }
 }
