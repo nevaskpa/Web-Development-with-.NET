@@ -22,7 +22,7 @@
                 <tr style="color:blue">
                     <td>@book.Title <em>(Bestseller)</em></td>
                     <td>@book.Author</td>
-                    <td>@book.PublisherId</td>
+                    <td>@book.Publisher.Name</td>
                 </tr>
             }
             else
@@ -30,7 +30,7 @@
                 <tr>
                     <td>@book.Title</td>
                     <td>@book.Author</td>
-                    <td>@book.PublisherId</td>
+                    <td>@book.Publisher.Name</td>
                 </tr>
             }
         }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using CoreCrud.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreCrud.Pages
 {
@@ -19,7 +20,7 @@ namespace CoreCrud.Pages
         public ICollection<Book> Books { get; set; }
         public void OnGet()
         {
-            Books = _context.Books.OrderBy(x => x.Title).ToList();
+            Books = _context.Books.Include(item => item.Publisher).OrderBy(x => x.Title).ToList();
         }
     }
 }
