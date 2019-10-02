@@ -36,7 +36,7 @@ namespace CoreCrud.Pages.Books
             {
                 return NotFound();
             }
-           ViewData["PublisherId"] = new SelectList(_context.Publishers, "ID", "ID");
+           ViewData["PublisherId"] = new SelectList(_context.Publishers, "ID", "Name");
             return Page();
         }
 
@@ -44,6 +44,7 @@ namespace CoreCrud.Pages.Books
         {
             if (!ModelState.IsValid)
             {
+                ViewData["PublisherId"] = new SelectList(_context.Publishers, "ID", "Name");
                 return Page();
             }
 

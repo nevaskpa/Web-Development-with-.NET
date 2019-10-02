@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace CoreCrud.Models
     public class Publisher
     {
         public int ID { get; set; } 
+
+        [Required]
         public string Name { get; set; }
         public string Country { get; set; }
 
@@ -17,15 +20,21 @@ namespace CoreCrud.Models
         public bool BestsellingProfile
         {
             get
-            {   foreach (var item in Books)
+            {
+                if (Books == null)
+                    return false;
+                else
                 {
-                    if (item.IsBestseller == true)
+                    foreach (var item in Books)
                     {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
+                        if (item.IsBestseller == true)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                 }
                 return false;

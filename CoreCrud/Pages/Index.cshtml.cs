@@ -25,7 +25,7 @@ namespace CoreCrud.Pages
             CountOfBestsellers = _context.Books.Count(x => x.IsBestseller == true);
             CountOfPublishers = _context.Publishers.Count();
             CountOfGenres = _context.Books.GroupBy(x => x.Genre).Count();
-            CountOfClassics = _context.Books.Count(x => x.IsClassic);
+            CountOfClassics = _context.Books.Count(x => x.IsClassic == true);
         }
     }
 }
